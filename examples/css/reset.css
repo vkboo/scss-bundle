@@ -5,13 +5,6 @@
 .clearfix::after {
   clear: both; }
 
-.clearfix::before, .clearfix::after {
-  content: "";
-  display: table; }
-
-.clearfix::after {
-  clear: both; }
-
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

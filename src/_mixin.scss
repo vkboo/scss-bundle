@@ -1,0 +1,20 @@
+// clearfix $extend=true, 在@include的情况下也用extend的方式，减少代码量
+@mixin clearfix($extend: true) {
+    @if $extend {
+        @extend %clearfix;
+    }
+    @else {
+        &::before,
+        &::after {
+            content: "";
+            display: table;
+        }
+        &::after {
+            clear: both;
+        }
+    }
+}
+
+%clearfix {
+    @include clearfix(false);
+}
