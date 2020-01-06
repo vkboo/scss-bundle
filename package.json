@@ -1,0 +1,29 @@
+{
+  "name": "scss-bundle",
+  "version": "1.0.0",
+  "description": "> 个人常用的SCSS工具代码",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "scss": "node-sass -w -r ./src/ -o ./examples/css/",
+    "serve": "npm run scss | http-server ./examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkboo/scss-bundle.git"
+  },
+  "author": "vkboo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vkboo/scss-bundle/issues"
+  },
+  "homepage": "https://github.com/vkboo/scss-bundle#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  },
+  "dependencies": {
+    "http-server": "^0.12.0"
+  }
+}
