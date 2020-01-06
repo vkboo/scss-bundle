@@ -1,4 +1,22 @@
-// clearfix $extend=true, 在@include的情况下也用extend的方式，减少代码量
+
+@charset "UTF-8";
+
+// 定width的块元素水平居中
+// $extend=true, 在@include的情况下也用extend的方式，减少代码量
+@mixin center-block($extend: true) {
+    @if $extend {
+        @extend %center-block;
+    } @else {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+%center-block {
+    @include center-block(false);
+}
+
+// 清楚浮动
 @mixin clearfix($extend: true) {
     @if $extend {
         @extend %clearfix;
@@ -18,3 +36,138 @@
 %clearfix {
     @include clearfix(false);
 }
+
+// 文字省略点点点
+@mixin ellipsis($extend: true) {
+    @if $extend {
+        @extend %ellipsis;
+    }
+    @else {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+%ellipsis {
+    @include ellipsis(false);
+}
+
+// 多行文字省略点点点
+// 只适用于webkit浏览器(实践FireFox70也行)
+// 注意不能定height
+@mixin ellipsis-lines($lines: 2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+// 按钮的禁用
+@mixin disabled($colorText: map-get($colorDisabled, text), $colorBg: map-get($colorDisabled, bg), $colorBorder: false) {
+    background-color: $colorBg !important;
+    color: $colorText !important;
+    cursor: default !important;
+    pointer-events: none !important;
+    @if $colorBorder {
+        border: 1px solid map-get($colorDisabled, border);
+    }
+}
+
+%disabled {
+    @include disabled;
+}
+
+// 相对定位下的绝对定位
+@mixin relative-abs($child-class-name, $child-width, $child-height, $direction: top) {
+    %justify-row {
+        left: 50%;
+        margin-left: -($child-width / 2);
+    }
+    %justify-column {
+        top: 50%;
+        margin-top: -($child-height / 2);
+    }
+    position: relative;
+    .#{$child-class-name} {
+        position: absolute;
+        width: $child-width;
+        height: $child-height;
+        @if $direction == top {
+            top: 0;
+            @extend %justify-row;
+        } @else if $direction == right {
+            right: 0;
+            @extend %justify-column;
+        } @else if $direction == bottom {
+            bottom: 0;
+            @extend %justify-row;
+        } @else if $direction == left {
+            left: 0;
+            @extend %justify-column;
+        }
+        @content;
+    }
+}
+
+// triangle 三角箭头
+%triangle-basic {
+    content: "";
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+@mixin triangle($direction: top, $borderWidth: 6px, $borderColor: $colorC) {
+    @extend %triangle-basic;
+    @if $direction == top {
+        border-bottom: $borderWidth solid $borderColor;
+        border-left: $borderWidth dashed transparent;
+        border-right: $borderWidth dashed transparent;
+    }
+    @else if $direction == right {
+        border-left: $borderWidth solid $borderColor;
+        border-top: $borderWidth dashed transparent;
+        border-bottom: $borderWidth dashed transparent;
+    }
+    @else if $direction == bottom {
+        border-top: $borderWidth solid $borderColor;
+        border-left: $borderWidth dashed transparent;
+        border-right: $borderWidth dashed transparent;
+    }
+    @else if $direction == left {
+        border-right: $borderWidth solid $borderColor;
+        border-top: $borderWidth dashed transparent;
+        border-bottom: $borderWidth dashed transparent;
+    }
+}
+
+@mixin v-arrow($direction: right, $borderWidth: 2px, $size: 10px) {
+    display: inline-block;
+    vertical-align: middle;
+    width: $size;
+    height: $size;
+    @if $direction == top {
+        border-top: $borderWidth solid currentColor;
+        border-right: $borderWidth solid currentColor;
+        transform: rotate(-45deg);
+    }
+    @else if $direction == right {
+        border-top: $borderWidth solid currentColor;
+        border-right: $borderWidth solid currentColor;
+        transform: rotate(45deg);
+    }
+    @else if $direction == bottom {
+        border-left: $borderWidth solid currentColor;
+        border-bottom: $borderWidth solid currentColor;
+        transform: rotate(-45deg);
+    }
+    @if $direction == left {
+        border-left: $borderWidth solid currentColor;
+        border-bottom: $borderWidth solid currentColor;
+        transform: rotate(45deg);
+    }
+}
+
+
