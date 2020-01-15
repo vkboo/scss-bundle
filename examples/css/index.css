@@ -11,6 +11,9 @@
   width: 0;
   overflow: hidden; }
 
+.transiton {
+  transition: all 0.3s ease-in-out; }
+
 .clearfix::before, .clearfix::after {
   content: "";
   display: table; }
@@ -23,6 +26,9 @@
   height: 0;
   width: 0;
   overflow: hidden; }
+
+.transiton {
+  transition: all 0.3s ease-in-out; }
 
 html {
   -ms-text-size-adjust: 100%;
@@ -328,3 +334,10 @@ i {
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
   body {
     background: blue; } }
+
+.transiton {
+  width: 100px;
+  height: 100px;
+  background: khaki; }
+  .transiton:hover {
+    transform: rotate(90deg); }

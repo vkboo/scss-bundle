@@ -34,3 +34,13 @@ body {
         background: blue;
     }
 }
+
+.transiton {
+    width: 100px;
+    height: 100px;
+    background: khaki;
+    @extend %transition-all;
+    &:hover {
+        transform: rotate(90deg);
+    }
+}
