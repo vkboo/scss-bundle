@@ -73,8 +73,24 @@ body {
 //     }
 // }
 
-@include landscape() {
-    body {
-        background: pink;
-    }
+@include animation-fade-in(rotate, 0);
+@include animation-fade-out(rotate, 0);
+@include animation-shrink-in();
+@include animation-shrink-out();
+@include animation-down-in();
+@include animation-down-out();
+@include animation-up-in();
+@include animation-up-out();
+@include animation-left-in();
+@include animation-left-out();
+@include animation-right-in();
+@include animation-right-out();
+
+
+.key-frame {
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    background: red;
+    
 }

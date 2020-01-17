@@ -14,6 +14,10 @@
 .transiton {
   transition: all 0.3s ease-in-out; }
 
+.rotate-in, .rotate-out, .shrink-in, .shrink-out, .down-in, .down-out, .up-in, .up-out, .left-in, .left-out, .right-in, .right-out {
+  animation-duration: 0.3s;
+  animation-fill-mode: both; }
+
 .clearfix::before, .clearfix::after {
   content: "";
   display: table; }
@@ -338,6 +342,134 @@ i {
   .transiton:hover {
     transform: rotate(90deg); }
 
-@media only screen and (orientation: landscape) {
-  body {
-    background: pink; } }
+.rotate-in {
+  animation-name: rotateIn; }
+
+@keyframes rotateIn {
+  from {
+    opacity: 0; } }
+
+.rotate-out {
+  animation-name: rotateOut; }
+
+@keyframes rotateOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.shrink-in {
+  animation-name: shrinkIn; }
+
+@keyframes shrinkIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.815); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+.shrink-out {
+  animation-name: shrinkOut; }
+
+@keyframes shrinkOut {
+  0% {
+    opacity: 1;
+    transform: scale(1); }
+  100% {
+    opacity: 0;
+    transform: scale(1.185); } }
+
+.down-in {
+  animation-name: downIn; }
+
+@keyframes downIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, 100%); }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0); } }
+
+.down-out {
+  animation-name: downOut; }
+
+@keyframes downOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0); }
+  100% {
+    opacity: 0;
+    transform: translate(0, 100%); } }
+
+.up-in {
+  animation-name: upIn; }
+
+@keyframes upIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, -100%); }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0); } }
+
+.up-out {
+  animation-name: upOut; }
+
+@keyframes upOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0); }
+  100% {
+    opacity: 0;
+    transform: translate(0, -100%); } }
+
+.left-in {
+  animation-name: leftIn; }
+
+@keyframes leftIn {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, 0); }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0); } }
+
+.left-out {
+  animation-name: leftOut; }
+
+@keyframes leftOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0); }
+  100% {
+    opacity: 0;
+    transform: translate(-100%, 0); } }
+
+.right-in {
+  animation-name: rightIn; }
+
+@keyframes rightIn {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 0); }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0); } }
+
+.right-out {
+  animation-name: rightOut; }
+
+@keyframes rightOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0); }
+  100% {
+    opacity: 0;
+    transform: translate(100%, 0); } }
+
+.key-frame {
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  background: red; }
