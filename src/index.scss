@@ -1,5 +1,7 @@
 @import "variables";
 @import "mixin";
+@import "media-queries";
+@import "animation";
 @import "reset";
 
 .demo {
@@ -30,9 +32,9 @@
 }
 
 body {
-    @include iphonex() {
-        background: blue;
-    }
+    // @include iphonex() {
+    //     background: blue;
+    // }
 }
 
 .transiton {
@@ -42,5 +44,37 @@ body {
     @extend %transition-all;
     &:hover {
         transform: rotate(90deg);
+    }
+}
+
+// @include screen-height (800px, 900px) {
+//     body {
+//         background: red;
+//     }
+// }
+
+// @include hdtv('4K') {
+//     body {
+//         background: blue
+//         ;
+//     }
+// }
+
+// @include iphone5() {
+//     body {
+//         background: red;
+//     }
+// }
+
+// iphone6的横向
+// @include iphone6(landscape) {
+//     body {
+//         background: blue;
+//     }
+// }
+
+@include landscape() {
+    body {
+        background: pink;
     }
 }

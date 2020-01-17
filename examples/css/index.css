@@ -331,13 +331,13 @@ i {
   border-right: 2px solid currentColor;
   transform: rotate(45deg); }
 
-@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  body {
-    background: blue; } }
-
 .transiton {
   width: 100px;
   height: 100px;
   background: khaki; }
   .transiton:hover {
     transform: rotate(90deg); }
+
+@media only screen and (orientation: landscape) {
+  body {
+    background: pink; } }
